@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book">
+    <select id="list" resultType="hello.itemservice.domain.item.Item">
+        SELECT * FROM ITEMS
+    </select>
+    <select id="item" resultType="hello.itemservice.domain.item.Item">
+        select * from ITEMS where ID=#{ID}
+    </select>
+    <insert id="insertitem" useGeneratedKeys="true" keyProperty="ID_num" keyColumn="ID">
+        insert into ITEMS(ID, ITEM_NAME, PRICE, QUANTITY) values(ITEMS_SEQ.NEXTVAL,#{ITEMNAME},#{PRICE},#{QUANTITY})
+    </insert>
+    <delete id="deleteitem">
+        delete ITEMS where ID=#{ID}
+    </delete>
+    <update id="updateitem">
+        update ITEMS set ITEM_NAME=#{ITEMNAME}, PRICE=#{PRICE}, QUANTITY=#{QUANTITY} where ID=#{ID}
+    </update>
+</mapper>

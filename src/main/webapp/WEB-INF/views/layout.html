@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Layout</title>
+</head>
+<body>
+<!-- 상단 헤더 부분 -->
+<div th:replace="fragments/header :: header"></div>
+
+<!-- 뷰 페이지에서 출력할 내용 -->
+<div th:replace="${content}"></div>
+
+</body>
+</html>

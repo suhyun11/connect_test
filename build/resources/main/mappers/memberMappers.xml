@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mem">
+    <select id="list" resultType="hello.itemservice.domain.item.Member">
+        SELECT * FROM MEMBER2
+    </select>
+    <select id="member" parameterType="hello.itemservice.domain.item.Member" resultType="hello.itemservice.domain.item.Member">
+        select * from MEMBER2 where MEMBER_NO=#{NO}
+    </select>
+    <insert id="insertmem" useGeneratedKeys="true" keyProperty="ID_num" keyColumn="ID">
+        insert into MEMBER2(MEMBER_NO, MEMBER_ID, MEMBER_PWD, MEMBER_ADDRESS, MEMBER_EMAIL, MEMBER_PHONE, MEMBER_NAME, MEMBER_GRADE, MEMBER_DATE) values(MEMBER_SEQ.NEXTVAL, #{ID}, #{PWD}, #{ADDRESS}, #{EMAIL}, #{PHONE}, #{NAME}, #{GRADE}, SYSTIMESTAMP);
+    </insert>
+    <delete id="deletemem" parameterType="java.lang.Long">
+        DELETE MEMBER2 WHERE MEMBER_NO=#{NO}
+    </delete>
+
+    <update id="updatemem" parameterType="hello.itemservice.domain.item.Member">
+        update MEMBER2 set MEMBER_PWD=#{PWD}, MEMBER_ADDRESS=#{ADDRESS}, MEMBER_EMAIL=#{EMAIL}, MEMBER_PHONE=#{PHONE}, MEMBER_NAME=#{NAME} where MEMBER_ID=#{ID}
+    </update>
+</mapper>
